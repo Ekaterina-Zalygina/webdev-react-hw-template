@@ -1,14 +1,15 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Nav } from "@/components/Nav/Nav";
+import { CenterBlock } from "@/components/CenterBlock/CenterBlock";
 
 export default function Home() {
   return (
-    <div className="wrapper">
-      <div className="container">
-        <main className="main">
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <main className={styles.main}>
           <Nav/>
-          <>
+          <CenterBlock/>
           <div className="main__sidebar sidebar">
             <div className="sidebar__personal">
               <p className="sidebar__personal-name">Sergey.Ivanov</p>

@@ -1,4 +1,4 @@
-/* .main {
+.main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,7 +7,22 @@
   min-height: 100vh;
 }
 
-.description {
+.container {
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background-color: #181818;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background-color: #383838;
+}
+
+/*.description {
   display: inherit;
   justify-content: inherit;
   align-items: inherit;
