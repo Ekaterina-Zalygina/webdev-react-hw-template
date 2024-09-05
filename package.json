@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "npm": "^10.8.3"
   }
 }
