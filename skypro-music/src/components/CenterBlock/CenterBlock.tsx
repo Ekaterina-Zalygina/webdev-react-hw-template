@@ -1,9 +1,13 @@
+import { TrackType } from "@/TrackType";
 import { Filter } from "../Filter/Filter";
 import { Playlist } from "../Playlist/Playlist";
 import { Search } from "../Search/Search";
 import styles from "./CenterBlock.module.css";
+import { TrackAll } from "@/API/TrackAPI";
 
-export const CenterBlock = () => {
+export const CenterBlock = async () => {
+    const track: TrackType[] = await TrackAll()
+
     return (
         <div className={styles.mainCenterblock}>
             <Search/>
