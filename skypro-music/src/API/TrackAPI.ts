@@ -7,4 +7,5 @@ export const TrackAll = async() => {
     }
     const data = await response.json()
     return data.data
+    
 }

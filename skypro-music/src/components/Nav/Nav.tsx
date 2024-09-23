@@ -28,7 +28,7 @@ export const Nav = () => {
         <span className={styles.burgerLine}></span>
         <span className={styles.burgerLine}></span>
       </div>
-      <div className={styles.navMenu}>
+      <div className={styles.navMenu} style={!isOpen ? {display: "none"}: {display: "block"}}>
         <ul className={styles.menuList}>
           <li className={styles.menuItem}>
             <a href="#" className={styles.menuLink}>
