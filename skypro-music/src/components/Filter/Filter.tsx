@@ -1,7 +1,10 @@
+import { TrackType } from "@/TrackType";
 import styles from "./Filter.module.css"
 import classNames from "classnames";
+import React from "react";
 
 export const Filter = () => {
+
     return (
         <div className={styles.centerblockFilter}>
         <div className={styles.filterTitle}>Искать по:</div>
