@@ -68,5 +68,6 @@
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
+  height: 673px;
 }
 

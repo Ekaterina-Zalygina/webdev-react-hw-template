@@ -4,12 +4,12 @@ import Image from "next/image";
 import styles from "./Nav.module.css";
 import React, { useState } from "react";
 
-
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const MenuSite = () => {
-    setIsOpen(!isOpen)
+  console.log(isOpen);
+  const clickSite = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -23,30 +23,32 @@ export const Nav = () => {
           height={170}
         />
       </div>
-      <div className={styles.navBurger} onClick={MenuSite}>
+      <div className={styles.navBurger} onClick={clickSite}>
         <span className={styles.burgerLine}></span>
         <span className={styles.burgerLine}></span>
         <span className={styles.burgerLine}></span>
       </div>
-      <div className={styles.navMenu} style={!isOpen ? {display: "none"}: {display: "block"}}>
-        <ul className={styles.menuList}>
-          <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
-              Главное
-            </a>
-          </li>
-          <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
-              Мой плейлист
-            </a>
-          </li>
-          <li className={styles.menuItem}>
-            <a href="../signin.html" className={styles.menuLink}>
-              Войти
-            </a>
-          </li>
-        </ul>
-      </div>
+      {isOpen && (
+        <div className={styles.navMenu}>
+          <ul className={styles.menuList}>
+            <li className={styles.menuItem}>
+              <a href="#" className={styles.menuLink}>
+                Главное
+              </a>
+            </li>
+            <li className={styles.menuItem}>
+              <a href="#" className={styles.menuLink}>
+                Мой плейлист
+              </a>
+            </li>
+            <li className={styles.menuItem}>
+              <a href="../signin.html" className={styles.menuLink}>
+                Войти
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

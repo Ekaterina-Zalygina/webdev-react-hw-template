@@ -1,4 +1,3 @@
-"use client";
 import { TrackType } from "@/TrackType";
 // import { TrackType } from "@/TrackType";
 import { Filter } from "../Filter/Filter";
@@ -38,7 +37,7 @@ export const CenterBlock = async () => {
     <div className={styles.mainCenterblock}>
       <Search />
       <h2 className={styles.centerblockH2}>Треки</h2>
-      <Filter />
+      <Filter tracks={tracks}/>
       <Playlist tracks={tracks}/>
     </div>
   );
