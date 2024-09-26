@@ -21,18 +21,6 @@ export const CenterBlock = async () => {
     }
   }
 
-  // useEffect(() => {
-  //   try {
-  //     const tracks = async () => {
-  //       const response = await TrackAll();
-  //       console.log(response)
-  //     };
-  //     tracks();
-  //   } catch (error) {
-  //     console.warn(error);
-  //   }
-  // }, []);
-
   return (
     <div className={styles.mainCenterblock}>
       <Search />

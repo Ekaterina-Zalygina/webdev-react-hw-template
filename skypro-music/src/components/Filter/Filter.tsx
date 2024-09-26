@@ -62,8 +62,8 @@ export const Filter = ({ tracks }: FilterProps) => {
             key={filter.key}
             onClick={() => handleFilter(filter.key)}>
             {filter.title}
-          </div>
-          {activeFilter === filter.key && (<ul>{(filter.list.map ((item) => <li key={item}>{item}</li>))}</ul>)}
+          </div> 
+          {activeFilter === filter.key && (<div className={styles.filterKey}><ul className={styles.ulFilter}>{(filter.list.map ((item) => <li key={item}>{item}</li>))}</ul></div> )}
         </div>
       ))}
       {/* <div className={classNames(styles.filterButton, styles.buttonAuthor, styles._btnText)} onClick={() => handleFilter('author')}>исполнителю</div>
