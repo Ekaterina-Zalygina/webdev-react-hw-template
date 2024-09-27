@@ -11,29 +11,29 @@ export const Bar = () => {
             <div className={styles.playerControls}>
               <div className={styles.playerBtnPrev}>
                 <svg className={styles.playerBtnPrevSvg}>
-                  <use xlinkHref="image/icon/sprite.svg#icon-prev"></use>
+                  <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                 </svg>
               </div>
               <div className={styles.playerBtnPlay}>
                 <svg className={styles.playerBtnPlaySvg}>
-                  <use xlinkHref="image/icon/sprite.svg#icon-play"></use>
+                  <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                 </svg>
               </div>
               <div className={styles.playerBtnNext}>
                 <svg className={styles.playerBtnNextSvg}>
-                  <use xlinkHref="image/icon/sprite.svg#icon-next"></use>
+                  <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                 </svg>
               </div>
               <div
                 className={classNames(styles.playerBtnRepeat, styles.btnIcon)}>
                 <svg className={styles.playerBtnRepeatSvg}>
-                  <use xlinkHref="image/icon/sprite.svg#icon-repeat"></use>
+                  <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
               </div>
               <div
                 className={classNames(styles.playerBtnShuffle, styles.btnIcon)}>
                 <svg className={styles.playerBtnShuffleSvg}>
-                  <use xlinkHref="image/icon/sprite.svg#icon-shuffle"></use>
+                  <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
               </div>
             </div>
@@ -43,7 +43,7 @@ export const Bar = () => {
               <div className={styles.trackPlayContain}>
                 <div className={styles.trackPlayImage}>
                   <svg className={styles.trackPlaySvg}>
-                    <use xlinkHref="image/icon/sprite.svg#icon-note"></use>
+                    <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                   </svg>
                 </div>
                 <div className={styles.trackPlayAuthor}>
@@ -62,7 +62,7 @@ export const Bar = () => {
                 <div
                   className={classNames(styles.trackPlayLike, styles.btnIcon)}>
                   <svg className={styles.trackPlayLikeSvg}>
-                    <use xlinkHref="image/icon/sprite.svg#icon-like"></use>
+                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                   </svg>
                 </div>
                 <div
@@ -71,7 +71,7 @@ export const Bar = () => {
                     styles.btnIcon
                   )}>
                   <svg className={styles.trackPlayDislikeSvg}>
-                    <use xlinkHref="image/icon/sprite.svg#icon-dislike"></use>
+                    <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
                   </svg>
                 </div>
               </div>
@@ -81,7 +81,7 @@ export const Bar = () => {
             <div className={styles.volumeContent}>
               <div className={styles.volumeImage}>
                 <svg className={styles.volumeSvg}>
-                  <use xlinkHref="image/icon/sprite.svg#icon-volume"></use>
+                  <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
                 </svg>
               </div>
               <div className={classNames(styles.volumeProgress, styles.btn)}>

@@ -10,7 +10,7 @@ export const Track = ({track}: TrackProps) => {
           <div className={styles.trackTitle}>
             <div className={styles.trackTitleImage}>
               <svg className={styles.trackTitleSvg}>
-                <use xlinkHref="image/icon/sprite.svg#icon-note"></use>
+                <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
               </svg>
             </div>
             <div className={styles.trackTitleText}>
@@ -31,7 +31,7 @@ export const Track = ({track}: TrackProps) => {
           </div>
           <div className={styles.TrackTime}>
             <svg className={styles.trackTimeSvg}>
-              <use xlinkHref="image/icon/sprite.svg#icon-like"></use>
+              <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
             </svg>
             <span className={styles.trackTimeText}>4:44</span>
           </div>
