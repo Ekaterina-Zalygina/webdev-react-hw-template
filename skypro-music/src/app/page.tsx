@@ -14,7 +14,7 @@ export default function Home() {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <Main setCurrentTrack={setCurrentTrack}/>
-        <Bar setCurrentTrack={setCurrentTrack}/>
+        {currentTrack && <Bar currentTrack={currentTrack}/>}
         <footer className="footer"></footer>
       </div>
     </div>

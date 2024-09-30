@@ -1,14 +1,27 @@
+"use client"
+
 import { TrackType } from "@/TrackType";
 import styles from "./Bar.module.css";
 import classNames from "classnames";
+import { useRef } from "react";
 
 type props = {
-  setCurrentTrack: (track: TrackType) => void
-}
+  currentTrack: TrackType;
+};
 
-export const Bar = ({setCurrentTrack}: props) => {
+export const Bar = ({ currentTrack }: props) => {
+
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  const onPlay = () => {
+    if(audioRef.current) {
+      audioRef.current.play()
+    }
+  }
+
   return (
     <div className={styles.bar}>
+      <audio ref={audioRef} controls src={currentTrack.track_file} />
       <div className={styles.barContent}>
         <div className={styles.barPlayerProgress}></div>
         <div className={styles.barPlayerBlock}>
@@ -19,7 +32,7 @@ export const Bar = ({setCurrentTrack}: props) => {
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                 </svg>
               </div>
-              <div className={styles.playerBtnPlay}>
+              <div className={styles.playerBtnPlay} onClick={onPlay}>
                 <svg className={styles.playerBtnPlaySvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                 </svg>
@@ -53,12 +66,12 @@ export const Bar = ({setCurrentTrack}: props) => {
                 </div>
                 <div className={styles.trackPlayAuthor}>
                   <a className={styles.trackPlayAuthorLink} href="http://">
-                    Ты та...
+                    {currentTrack.name}
                   </a>
                 </div>
                 <div className={styles.trackPlayAlbum}>
                   <a className={styles.trackPlayAlbumLink} href="http://">
-                    Баста
+                    {currentTrack.author}
                   </a>
                 </div>
               </div>
