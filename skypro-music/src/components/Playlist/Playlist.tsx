@@ -3,9 +3,12 @@ import styles from "./Playlist.module.css";
 import classNames from "classnames";
 import { Track } from "../Track/Track";
 
-type PlaylistProps = { tracks: TrackType[] };
+type PlaylistProps = {
+  tracks: TrackType[],
+  setCurrentTrack: (track: TrackType) => void;
+};
 
-export const Playlist = ({ tracks }: PlaylistProps) => {
+export const Playlist = ({ tracks, setCurrentTrack }: PlaylistProps) => {
   return (
     <div className={styles.centerblockContent}>
       <div className={styles.contentTitle}>
@@ -26,15 +29,12 @@ export const Playlist = ({ tracks }: PlaylistProps) => {
       </div>
       <div className={styles.contentPlaylist}>
         {tracks.map((track) => (
-          <Track track={track} key={track._id}/>
+          <Track track={track} key={track._id} setCurrentTrack={setCurrentTrack}/>
         ))}
       </div>
     </div>
   );
 };
-
-
-
 
 // <div className={styles.playlistItem}>
 //   <div className={styles.playlistTrack }>

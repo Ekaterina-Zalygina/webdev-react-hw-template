@@ -1,7 +1,12 @@
+import { TrackType } from "@/TrackType";
 import styles from "./Bar.module.css";
 import classNames from "classnames";
 
-export const Bar = () => {
+type props = {
+  setCurrentTrack: (track: TrackType) => void
+}
+
+export const Bar = ({setCurrentTrack}: props) => {
   return (
     <div className={styles.bar}>
       <div className={styles.barContent}>
