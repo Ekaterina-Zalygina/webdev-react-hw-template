@@ -16,7 +16,9 @@ export const Bar = ({ currentTrack }: props) => {
   })
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlay, setIsPlay] = useState(false);
+  const [isLoop, setIsLoop] = useState<boolean>(false)
 
+  //плей или пауза песни
   const onTogglePlay = () => {
     if (audioRef.current) {
       if (isPlay) {
@@ -29,6 +31,7 @@ export const Bar = ({ currentTrack }: props) => {
     }
   };
 
+  //настраивает звук музыки 
   const onChangeVolume = (e: ChangeEvent<HTMLInputElement>) => {
     const volume = Number(e.target.value) / 100;
     if (audioRef.current) {
@@ -36,8 +39,20 @@ export const Bar = ({ currentTrack }: props) => {
     }
   };
 
+  //перемотка трека с помощью ползунка 
   const inChangeTime = (e: SyntheticEvent<HTMLAudioElement>) => {
     setCurrentProgress({currentTime: e.currentTarget.currentTime, duration: e.currentTarget.duration})
+  }
+
+  //репит трека
+  const timeLoop = () => {
+    if(audioRef.current) {
+      if(isLoop) {
+        audioRef.current.loop = false
+      } else {
+        audioRef.current.loop = true
+      }
+    }
   }
 
   return (
@@ -63,14 +78,14 @@ export const Bar = ({ currentTrack }: props) => {
                   <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                 </svg>
               </div>
-              <div
+              <div onClick={timeLoop}
                 className={classNames(styles.playerBtnRepeat, styles.btnIcon)}>
                 <svg className={styles.playerBtnRepeatSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
               </div>
               <div
-                className={classNames(styles.playerBtnShuffle, styles.btnIcon)}>
+                className={classNames(styles.playerBtnShuffle, isLoop ? styles.btnIcon : null)}>
                 <svg className={styles.playerBtnShuffleSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
