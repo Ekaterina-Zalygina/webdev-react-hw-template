@@ -22,6 +22,35 @@
   background: #2e2e2e;
 }
 
+/* .styledProgressInput {
+  .styledProgressInput {
+    --progress-height: 5px;
+    --progress-color: #b672ff;
+    --progress-bg-color: #2e2e2e;
+
+    margin: 0;
+    width: 100%;
+    height: var(--progress-height);
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.2s;
+
+    background: linear-gradient(
+      to right,
+      var(--progress-color) var(--value),
+      var(--progress-bg-color) var(--value)
+    );
+  }
+
+  .styledProgressInput:hover {
+    --progress-height: 8px;
+  }
+} */
+
 .barPlayerBlock {
   height: 73px;
   display: -webkit-box;
@@ -147,7 +176,7 @@
   } */
 }
 
-.btnIcon svg{
+.btnIcon svg {
   stroke: white;
 }
 
@@ -329,4 +358,8 @@
 
 .volumeProgressLine {
   width: 109px;
+}
+
+.onTimeUpdate {
+  display: none;
 }

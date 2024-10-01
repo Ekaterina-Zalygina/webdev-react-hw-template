@@ -12,11 +12,14 @@ type props = {
 export const Bar = ({ currentTrack }: props) => {
   const [currentProgress, setCurrentProgress] = useState({
     currentTime: 0,
-    duration: 0
-  })
+    duration: 0,
+  });
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlay, setIsPlay] = useState(false);
-  const [isLoop, setIsLoop] = useState<boolean>(false)
+  const [isLoop, setIsLoop] = useState<boolean>(false);
+  // const [isPlaying, setIsPlaying] = useState(false);
+  // const [currentTime, setCurrentTime] = useState(0);
+  // const duration = audioRef.current?.duration || 0;
 
   //плей или пауза песни
   const onTogglePlay = () => {
@@ -31,7 +34,7 @@ export const Bar = ({ currentTrack }: props) => {
     }
   };
 
-  //настраивает звук музыки 
+  //настраивает звук музыки
   const onChangeVolume = (e: ChangeEvent<HTMLInputElement>) => {
     const volume = Number(e.target.value) / 100;
     if (audioRef.current) {
@@ -39,27 +42,48 @@ export const Bar = ({ currentTrack }: props) => {
     }
   };
 
-  //перемотка трека с помощью ползунка 
+  //перемотка трека с помощью ползунка
   const inChangeTime = (e: SyntheticEvent<HTMLAudioElement>) => {
-    setCurrentProgress({currentTime: e.currentTarget.currentTime, duration: e.currentTarget.duration})
-  }
+    setCurrentProgress({
+      currentTime: e.currentTarget.currentTime,
+      duration: e.currentTarget.duration,
+    });
+  };
 
   //репит трека
   const timeLoop = () => {
-    if(audioRef.current) {
-      if(isLoop) {
-        audioRef.current.loop = false
+    if (audioRef.current) {
+      if (isLoop) {
+        audioRef.current.loop = false;
       } else {
-        audioRef.current.loop = true
+        audioRef.current.loop = true;
       }
     }
-  }
+  };
+
+  //полоса прогресса
+  // const stripProgress = (e: SyntheticEvent<HTMLAudioElement>) => {
+  //   if (audioRef.current) {
+  //     if (isPlaying) {
+  //       audioRef.current.pause();
+  //     } else {
+  //       audioRef.current.play();
+  //     }
+  //     setIsPlaying(!isPlaying);
+  //   }
+  // };
 
   return (
     <div className={styles.bar}>
-      <audio onTimeUpdate={inChangeTime} ref={audioRef} controls src={currentTrack.track_file} />
+      <audio className={styles.onTimeUpdate}
+        onTimeUpdate={inChangeTime}
+        ref={audioRef}
+        controls
+        src={currentTrack.track_file}
+      />
       <div className={styles.barContent}>
-        <div className={styles.barPlayerProgress}></div>
+        <div className={styles.barPlayerProgress}>
+        </div>
         <div className={styles.barPlayerBlock}>
           <div className={styles.barPlayer}>
             <div className={styles.playerControls}>
@@ -78,14 +102,18 @@ export const Bar = ({ currentTrack }: props) => {
                   <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                 </svg>
               </div>
-              <div onClick={timeLoop}
+              <div
+                onClick={timeLoop}
                 className={classNames(styles.playerBtnRepeat, styles.btnIcon)}>
                 <svg className={styles.playerBtnRepeatSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
               </div>
               <div
-                className={classNames(styles.playerBtnShuffle, isLoop ? styles.btnIcon : null)}>
+                className={classNames(
+                  styles.playerBtnShuffle,
+                  isLoop ? styles.btnIcon : null
+                )}>
                 <svg className={styles.playerBtnShuffleSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
