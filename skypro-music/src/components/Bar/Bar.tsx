@@ -1,27 +1,48 @@
-"use client"
+"use client";
 
 import { TrackType } from "@/TrackType";
 import styles from "./Bar.module.css";
 import classNames from "classnames";
-import { useRef } from "react";
+import { ChangeEvent, SyntheticEvent, useRef, useState } from "react";
 
 type props = {
   currentTrack: TrackType;
 };
 
 export const Bar = ({ currentTrack }: props) => {
+  const [currentProgress, setCurrentProgress] = useState({
+    currentTime: 0,
+    duration: 0
+  })
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlay, setIsPlay] = useState(false);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null)
-
-  const onPlay = () => {
-    if(audioRef.current) {
-      audioRef.current.play()
+  const onTogglePlay = () => {
+    if (audioRef.current) {
+      if (isPlay) {
+        setIsPlay(false);
+        audioRef.current.pause();
+      } else {
+        setIsPlay(true);
+        audioRef.current.play();
+      }
     }
+  };
+
+  const onChangeVolume = (e: ChangeEvent<HTMLInputElement>) => {
+    const volume = Number(e.target.value) / 100;
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  };
+
+  const inChangeTime = (e: SyntheticEvent<HTMLAudioElement>) => {
+    setCurrentProgress({currentTime: e.currentTarget.currentTime, duration: e.currentTarget.duration})
   }
 
   return (
     <div className={styles.bar}>
-      <audio ref={audioRef} controls src={currentTrack.track_file} />
+      <audio onTimeUpdate={inChangeTime} ref={audioRef} controls src={currentTrack.track_file} />
       <div className={styles.barContent}>
         <div className={styles.barPlayerProgress}></div>
         <div className={styles.barPlayerBlock}>
@@ -32,7 +53,7 @@ export const Bar = ({ currentTrack }: props) => {
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                 </svg>
               </div>
-              <div className={styles.playerBtnPlay} onClick={onPlay}>
+              <div className={styles.playerBtnPlay} onClick={onTogglePlay}>
                 <svg className={styles.playerBtnPlaySvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                 </svg>
@@ -104,6 +125,7 @@ export const Bar = ({ currentTrack }: props) => {
               </div>
               <div className={classNames(styles.volumeProgress, styles.btn)}>
                 <input
+                  onChange={onChangeVolume}
                   className={classNames(styles.volumeProgressLine, styles.btn)}
                   type="range"
                   name="range"

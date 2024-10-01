@@ -12,6 +12,10 @@ export const Track = ({ track, setCurrentTrack }: TrackProps) => {
     setCurrentTrack(track)
   }
 
+  // const trackTime = () => {
+
+  // }
+
   return (
     <div onClick={onClickTrack} key={track._id} className={styles.playlistItem}>
       <div className={styles.playlistTrack}>
@@ -42,7 +46,7 @@ export const Track = ({ track, setCurrentTrack }: TrackProps) => {
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </svg>
           <span className={styles.trackTimeText}>
-            {track.duration_in_seconds}
+            {Math.floor(track.duration_in_seconds / 60)} : {Math.floor(track.duration_in_seconds % 60)}
           </span>
         </div>
       </div>
