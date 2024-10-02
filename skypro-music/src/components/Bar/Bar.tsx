@@ -4,6 +4,7 @@ import { TrackType } from "@/TrackType";
 import styles from "./Bar.module.css";
 import classNames from "classnames";
 import { ChangeEvent, SyntheticEvent, useRef, useState } from "react";
+import ProgressBar from "./ProgressBar";
 
 type props = {
   currentTrack: TrackType;
@@ -17,9 +18,10 @@ export const Bar = ({ currentTrack }: props) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlay, setIsPlay] = useState(false);
   const [isLoop, setIsLoop] = useState<boolean>(false);
-  // const [isPlaying, setIsPlaying] = useState(false);
-  // const [currentTime, setCurrentTime] = useState(0);
-  // const duration = audioRef.current?.duration || 0;
+  const [isPlaying, setIsPlaying] = useState(false);
+  // const [volume, setVolume] = useState(0.5);
+  const [actualTime, setActualTime] = useState(0);
+  const lasting = 0;
 
   //плей или пауза песни
   const onTogglePlay = () => {
@@ -43,7 +45,7 @@ export const Bar = ({ currentTrack }: props) => {
   };
 
   //перемотка трека с помощью ползунка
-  const inChangeTime = (e: SyntheticEvent<HTMLAudioElement>) => {
+  const inChangeTime = (e: ChangeEvent<HTMLAudioElement>) => {
     setCurrentProgress({
       currentTime: e.currentTarget.currentTime,
       duration: e.currentTarget.duration,
@@ -75,7 +77,8 @@ export const Bar = ({ currentTrack }: props) => {
 
   return (
     <div className={styles.bar}>
-      <audio className={styles.onTimeUpdate}
+      <audio
+        className={styles.onTimeUpdate}
         onTimeUpdate={inChangeTime}
         ref={audioRef}
         controls
@@ -83,6 +86,12 @@ export const Bar = ({ currentTrack }: props) => {
       />
       <div className={styles.barContent}>
         <div className={styles.barPlayerProgress}>
+        <ProgressBar
+            max={lasting}
+            value={actualTime}
+            step={0.01}
+            onChange={inChangeTime}
+          />
         </div>
         <div className={styles.barPlayerBlock}>
           <div className={styles.barPlayer}>
