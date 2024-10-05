@@ -219,9 +219,9 @@
   }
 }
 
-/* .btnIcon svg{
+.btnIcon svg{
   stroke: white;
-} */
+}
 
 .playerBtnShuffle {
   display: -webkit-box;

@@ -52,14 +52,14 @@ export const Filter = ({ tracks }: FilterProps) => {
     <div className={styles.centerblockFilter}>
       <div className={styles.filterTitle}>Искать по:</div>
       {filters.map((filter) => (
-        <div>
+        <div key={filter.key}>
           <div
             className={classNames(
               styles.filterButton,
               styles.buttonYearh,
               styles._btnText
             )}
-            key={filter.key}
+           
             onClick={() => handleFilter(filter.key)}>
             {filter.title}
           </div> 
