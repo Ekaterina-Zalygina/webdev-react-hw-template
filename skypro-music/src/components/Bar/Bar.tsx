@@ -20,8 +20,8 @@ export const Bar = ({ currentTrack }: props) => {
   const [isLoop, setIsLoop] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState(false);
   // const [volume, setVolume] = useState(0.5);
-  const [actualTime, setActualTime] = useState(0);
-  const lasting = 0;
+  // const [actualTime, setActualTime] = useState(0);
+  // const lasting = 0;
 
   //плей или пауза песни
   const onTogglePlay = () => {
@@ -64,6 +64,21 @@ export const Bar = ({ currentTrack }: props) => {
   };
 
   //полоса прогресса
+  const onChangeProgress = (e: ChangeEvent<HTMLInputElement>) => {
+    const currentTime = Number(e.target.value)
+
+    setCurrentProgress ({
+      ...currentProgress,
+      currentTime
+    })
+    if(audioRef.current) {
+      audioRef.current.currentTime = currentTime
+    }
+  }
+
+
+
+  //полоса прогресса
   // const stripProgress = (e: SyntheticEvent<HTMLAudioElement>) => {
   //   if (audioRef.current) {
   //     if (isPlaying) {
@@ -87,10 +102,10 @@ export const Bar = ({ currentTrack }: props) => {
       <div className={styles.barContent}>
         <div className={styles.barPlayerProgress}>
         <ProgressBar
-            max={lasting}
-            value={actualTime}
+            max={currentProgress.duration}
+            value={currentProgress.currentTime}
             step={0.01}
-            onChange={inChangeTime}
+            onChange={onChangeProgress}
           />
         </div>
         <div className={styles.barPlayerBlock}>
@@ -122,7 +137,8 @@ export const Bar = ({ currentTrack }: props) => {
                 className={classNames(
                   styles.playerBtnShuffle,
                   isLoop ? styles.btnIcon : null
-                )}>
+                )}
+                >
                 <svg className={styles.playerBtnShuffleSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>

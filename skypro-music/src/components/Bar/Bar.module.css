@@ -215,10 +215,11 @@
 
   &:hover {
     stroke: white;
+    cursor: pointer;
   }
 }
 
-/* .btnIcon svg {
+/* .btnIcon svg{
   stroke: white;
 } */
 
