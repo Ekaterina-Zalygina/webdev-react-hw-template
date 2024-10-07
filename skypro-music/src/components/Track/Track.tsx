@@ -1,6 +1,7 @@
 import { TrackType } from "@/TrackType";
 import styles from "./Track.module.css";
-import { useAppSelector } from "@/store/store";
+import { useAppDispatch } from "@/store/store";
+// import { useAppSelector } from "@/store/store";
 
 type TrackProps = {
   track: TrackType;
@@ -17,6 +18,8 @@ export const Track = ({ track, setCurrentTrack }: TrackProps) => {
     const seconds = Math.floor(duration % 60);
     return `${minutes}:${seconds < 10 ? `0${seconds}` : `${seconds}`}`;
   };
+
+  // const dispatch = useAppDispatch()
 
   return (
     <div onClick={onClickTrack} key={track._id} className={styles.playlistItem}>

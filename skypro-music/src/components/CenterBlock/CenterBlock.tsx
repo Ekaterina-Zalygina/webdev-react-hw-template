@@ -13,20 +13,20 @@ import { setTrackState } from "@/store/features/trackSlice";
 // import { useEffect } from "react";
 
 type props = {
-  thisTrack: (track: TrackType) => void;
+  setCurrentTrack: (track: TrackType) => void;
 };
 
-export const CenterBlock = ({ thisTrack }: props) => {
+export const CenterBlock = ({ setCurrentTrack }: props) => {
   const [tracks, setTracks] = useState<TrackType[]>([]);
   const [err, setErr] = useState<string | null>(null)
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
 
   useEffect(() => {
     const getData = async() => {
       try {
         const res = await TrackAll();
-        dispatch(setTrackState(res))
-        // setTracks(res)
+        // dispatch(setTrackState(res))
+        setTracks(res)
       } catch (error) {
         if (error instanceof Error) {
           console.log(error.message);
@@ -45,7 +45,7 @@ export const CenterBlock = ({ thisTrack }: props) => {
       <Search />
       <h2 className={styles.centerblockH2}>Треки</h2>
       <Filter tracks={tracks} />
-      <Playlist tracks={tracks} thisTrack={thisTrack} />
+      <Playlist tracks={tracks} setCurrentTrack={setCurrentTrack} />
     </div>
   );
 };
