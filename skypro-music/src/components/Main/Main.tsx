@@ -5,14 +5,14 @@ import { Sidebar } from "../Sidebar/Sidebar"
 import styles from "./Main.module.css";
 
 type props = {
-    setCurrentTrack: (track: TrackType) => void
+    thisTrack: (track: TrackType) => void
 }
 
-export const Main = ({setCurrentTrack}: props) => {
+export const Main = ({thisTrack}: props) => {
     return (
         <main className={styles.main}>
         <Nav/>
-        <CenterBlock setCurrentTrack={setCurrentTrack}/>
+        <CenterBlock thisTrack={thisTrack}/>
         <Sidebar/>
       </main>
     )

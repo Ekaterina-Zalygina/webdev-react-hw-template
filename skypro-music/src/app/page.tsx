@@ -6,15 +6,17 @@ import { Bar } from "@/components/Bar/Bar";
 import { useState } from "react";
 import { TrackType } from "@/TrackType";
 import { Main } from "@/components/Main/Main";
+import { useAppSelector } from "@/store/store";
 
 export default function Home() {
-  const [currentTrack, setCurrentTrack] = useState<TrackType | null>(null)
-  console.log(currentTrack)
+  // const [currentTrack, setCurrentTrack] = useState<TrackType | null>(null)
+  const {thisTrack} = useAppSelector(state => state.tracksSlice)
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <Main setCurrentTrack={setCurrentTrack}/>
-        {currentTrack && <Bar currentTrack={currentTrack}/>}
+        <Main thisTrack={thisTrack}/>
+        {thisTrack && <Bar thisTrack={thisTrack}/>}
         <footer className="footer"></footer>
       </div>
     </div>

@@ -8,21 +8,25 @@ import { Search } from "../Search/Search";
 import styles from "./CenterBlock.module.css";
 import { TrackAll } from "@/API/TrackAPI";
 import { useEffect, useState } from "react";
+import { useAppDispatch } from "@/store/store";
+import { setTrackState } from "@/store/features/trackSlice";
 // import { useEffect } from "react";
 
 type props = {
-  setCurrentTrack: (track: TrackType) => void;
+  thisTrack: (track: TrackType) => void;
 };
 
-export const CenterBlock = ({ setCurrentTrack }: props) => {
+export const CenterBlock = ({ thisTrack }: props) => {
   const [tracks, setTracks] = useState<TrackType[]>([]);
   const [err, setErr] = useState<string | null>(null)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const getData = async() => {
       try {
         const res = await TrackAll();
-        setTracks(res)
+        dispatch(setTrackState(res))
+        // setTracks(res)
       } catch (error) {
         if (error instanceof Error) {
           console.log(error.message);
@@ -41,7 +45,7 @@ export const CenterBlock = ({ setCurrentTrack }: props) => {
       <Search />
       <h2 className={styles.centerblockH2}>Треки</h2>
       <Filter tracks={tracks} />
-      <Playlist tracks={tracks} setCurrentTrack={setCurrentTrack} />
+      <Playlist tracks={tracks} thisTrack={thisTrack} />
     </div>
   );
 };

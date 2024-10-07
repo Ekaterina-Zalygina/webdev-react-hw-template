@@ -1,6 +1,8 @@
+import { TrackType } from "@/TrackType";
+
 export const URL = 'https://webdev-music-003b5b991590.herokuapp.com'
 
-export const TrackAll = async() => {
+export const TrackAll = async():Promise<TrackType[]> => {
     const response = await fetch(URL + '/catalog/track/all/');
     if(!response.ok) {
         throw new Error("Ошибка данных")

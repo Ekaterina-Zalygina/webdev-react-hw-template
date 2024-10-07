@@ -7,10 +7,10 @@ import { ChangeEvent, SyntheticEvent, useEffect, useRef, useState } from "react"
 import ProgressBar from "./ProgressBar";
 
 type props = {
-  currentTrack: TrackType;
+  thisTrack: TrackType;
 };
 
-export const Bar = ({ currentTrack }: props) => {
+export const Bar = ({ thisTrack }: props) => {
   const [currentProgress, setCurrentProgress] = useState({
     currentTime: 0,
     duration: 0,
@@ -18,9 +18,10 @@ export const Bar = ({ currentTrack }: props) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlay, setIsPlay] = useState(false);
   const [isLoop, setIsLoop] = useState<boolean>(false);
+  // const [isShuffle, setIsShuffle] = useState(false)
 
   useEffect(() => {
-    if(audioRef.current && currentTrack) {
+    if(audioRef.current && thisTrack) {
       if(!isPlay) {
         audioRef.current.play()
         setIsPlay(true)
@@ -29,7 +30,7 @@ export const Bar = ({ currentTrack }: props) => {
         setIsPlay(false)
       }
     } 
-  }, [currentTrack])
+  }, [thisTrack])
 
   // const [isPlaying, setIsPlaying] = useState(false);
   // const [volume, setVolume] = useState(0.5);
@@ -91,6 +92,19 @@ export const Bar = ({ currentTrack }: props) => {
     }
   };
 
+  //перемешивание треков 
+  // const timeShuffle = () => {
+  //   if (audioRef.current) {
+  //     if (isLoop) {
+  //       audioRef.current. = false;
+  //       setIsLoop(false);
+  //     } else {
+  //       audioRef.current.loop = true;
+  //       setIsLoop(true);
+  //     }
+  //   }
+  // };
+
   //полоса прогресса
   // const stripProgress = (e: SyntheticEvent<HTMLAudioElement>) => {
   //   if (audioRef.current) {
@@ -110,7 +124,7 @@ export const Bar = ({ currentTrack }: props) => {
         onTimeUpdate={inChangeTime}
         ref={audioRef}
         controls
-        src={currentTrack.track_file}
+        src={thisTrack.track_file}
       />
       <div className={styles.barContent}>
         <div className={styles.barPlayerProgress}>
@@ -168,12 +182,12 @@ export const Bar = ({ currentTrack }: props) => {
                 </div>
                 <div className={styles.trackPlayAuthor}>
                   <a className={styles.trackPlayAuthorLink} href="http://">
-                    {currentTrack.name}
+                    {thisTrack.name}
                   </a>
                 </div>
                 <div className={styles.trackPlayAlbum}>
                   <a className={styles.trackPlayAlbumLink} href="http://">
-                    {currentTrack.author}
+                    {thisTrack.author}
                   </a>
                 </div>
               </div>
