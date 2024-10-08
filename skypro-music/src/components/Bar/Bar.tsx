@@ -12,7 +12,7 @@ type props = {
   currentTrack: TrackType;
 };
 
-export const Bar = ({ currentTrack }: props) => {
+export const Bar = ({currentTrack}: props) => {
   const [currentProgress, setCurrentProgress] = useState({
     currentTime: 0,
     duration: 0,
@@ -22,6 +22,7 @@ export const Bar = ({ currentTrack }: props) => {
   const [isLoop, setIsLoop] = useState<boolean>(false);
   const dispatch = useAppDispatch()
   const {isShuffle} = useAppSelector(state => state.tracksSlice)
+
 
   useEffect(() => {
     if(audioRef.current && currentTrack) {
@@ -102,7 +103,6 @@ export const Bar = ({ currentTrack }: props) => {
 
   //перемешивание треков
   const toggleShuffle = () => {
-    dispatch(setIsShuffleTrack(!isShuffle))
     dispatch(setIsShuffleTrack())
   }
 
@@ -112,8 +112,9 @@ export const Bar = ({ currentTrack }: props) => {
         className={styles.onTimeUpdate}
         onTimeUpdate={inChangeTime}
         ref={audioRef}
+        onEnded={next}
         controls
-        src={currentTrack.track_file}
+        src={currentTrack?.track_file}
       />
       <div className={styles.barContent}>
         <div className={styles.barPlayerProgress}>
@@ -154,7 +155,9 @@ export const Bar = ({ currentTrack }: props) => {
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
               </div>
-              <div className={classNames(styles.playerBtnShuffle)} onClick={toggleShuffle}>
+              <div className={classNames(styles.playerBtnShuffle, {
+                  [styles.btnIcon]: isShuffle,
+                })} onClick={toggleShuffle}>
                 <svg className={styles.playerBtnShuffleSvg}>
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
@@ -171,12 +174,12 @@ export const Bar = ({ currentTrack }: props) => {
                 </div>
                 <div className={styles.trackPlayAuthor}>
                   <a className={styles.trackPlayAuthorLink} href="http://">
-                    {currentTrack.name}
+                    {currentTrack?.name}
                   </a>
                 </div>
                 <div className={styles.trackPlayAlbum}>
                   <a className={styles.trackPlayAlbumLink} href="http://">
-                    {currentTrack.author}
+                    {currentTrack?.author}
                   </a>
                 </div>
               </div>

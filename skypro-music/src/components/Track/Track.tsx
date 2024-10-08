@@ -1,16 +1,17 @@
 import { TrackType } from "@/TrackType";
 import styles from "./Track.module.css";
 import { useAppDispatch } from "@/store/store";
+import { setThisTrack } from "@/store/features/trackSlice";
 // import { useAppSelector } from "@/store/store";
 
 type TrackProps = {
   track: TrackType;
-  setCurrentTrack: (track: TrackType) => void;
 };
 
-export const Track = ({ track, setCurrentTrack }: TrackProps) => {
+export const Track = ({ track }: TrackProps) => {
+  const dispatch = useAppDispatch()
   const onClickTrack = () => {
-    setCurrentTrack(track);
+    dispatch(setThisTrack(track))
   };
 
   const trackTime = (duration: number) => {
@@ -18,8 +19,6 @@ export const Track = ({ track, setCurrentTrack }: TrackProps) => {
     const seconds = Math.floor(duration % 60);
     return `${minutes}:${seconds < 10 ? `0${seconds}` : `${seconds}`}`;
   };
-
-  // const dispatch = useAppDispatch()
 
   return (
     <div onClick={onClickTrack} key={track._id} className={styles.playlistItem}>

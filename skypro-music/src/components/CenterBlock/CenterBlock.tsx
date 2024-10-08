@@ -12,11 +12,11 @@ import { useAppDispatch } from "@/store/store";
 import { setTrackState } from "@/store/features/trackSlice";
 // import { useEffect } from "react";
 
-type props = {
-  setCurrentTrack: (track: TrackType) => void;
-};
+// type props = {
+//   setCurrentTrack: (track: TrackType) => void;
+// };
 
-export const CenterBlock = ({ setCurrentTrack }: props) => {
+export const CenterBlock = () => {
   const [tracks, setTracks] = useState<TrackType[]>([]);
   const [err, setErr] = useState<string | null>(null)
   // const dispatch = useAppDispatch()
@@ -45,7 +45,7 @@ export const CenterBlock = ({ setCurrentTrack }: props) => {
       <Search />
       <h2 className={styles.centerblockH2}>Треки</h2>
       <Filter tracks={tracks} />
-      <Playlist tracks={tracks} setCurrentTrack={setCurrentTrack} />
+      <Playlist tracks={tracks} />
     </div>
   );
 };

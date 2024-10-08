@@ -4,13 +4,12 @@ import classNames from "classnames";
 import { Track } from "../Track/Track";
 
 type PlaylistProps = {
-  tracks: TrackType[],
-  setCurrentTrack: (track: TrackType) => void;
+  tracks: TrackType[]
 };
 
 
 
-export const Playlist = ({ tracks, setCurrentTrack }: PlaylistProps) => {
+export const Playlist = ({ tracks }: PlaylistProps) => {
   return (
     <div className={styles.centerblockContent}>
       <div className={styles.contentTitle}>
@@ -31,7 +30,7 @@ export const Playlist = ({ tracks, setCurrentTrack }: PlaylistProps) => {
       </div>
       <div className={styles.contentPlaylist}>
         {tracks.map((track) => (
-          <Track track={track} key={track._id} setCurrentTrack={setCurrentTrack}/>
+          <Track track={track} key={track._id}/>
         ))}
       </div>
     </div>
