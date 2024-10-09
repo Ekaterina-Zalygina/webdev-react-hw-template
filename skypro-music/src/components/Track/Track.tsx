@@ -1,18 +1,25 @@
 import { TrackType } from "@/TrackType";
 import styles from "./Track.module.css";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { setThisTrack } from "@/store/features/trackSlice";
+import { useEffect } from "react";
 // import { useAppSelector } from "@/store/store";
 
 type TrackProps = {
   track: TrackType;
+  playlist: TrackType[]
 };
 
-export const Track = ({ track }: TrackProps) => {
+export const Track = ({ track, playlist }: TrackProps) => {
+  // const thisTrack = useAppSelector((state) => state.playlist.thisTrack);
   const dispatch = useAppDispatch()
+
   const onClickTrack = () => {
-    dispatch(setThisTrack(track))
-  };
+    dispatch(setThisTrack({
+      currentTrack: track,
+      currentPlaylist: playlist
+    }))
+  }
 
   const trackTime = (duration: number) => {
     const minutes = Math.floor(duration / 60);

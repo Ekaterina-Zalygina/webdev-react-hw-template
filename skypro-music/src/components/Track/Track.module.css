@@ -121,3 +121,31 @@
   text-align: right;
   color: #696969;
 }
+
+.playPulse {
+  background: #b672ff;
+  border-radius: 50%;
+  animation: 0.4s infinite alternate pulsation;
+}
+
+@keyframes pulsation {
+
+  from {
+      width: 10px;
+      height: 10px;
+
+  }
+
+  to {
+      width: 18px;
+      height: 18px;
+  }
+}
+
+
+.pausePulse {
+  width: 18px;
+  height: 18px;
+  background: #b672ff;
+  border-radius: 50%;
+}

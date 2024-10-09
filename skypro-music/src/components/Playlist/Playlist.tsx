@@ -30,7 +30,7 @@ export const Playlist = ({ tracks }: PlaylistProps) => {
       </div>
       <div className={styles.contentPlaylist}>
         {tracks.map((track) => (
-          <Track track={track} key={track._id}/>
+          <Track playlist={tracks} track={track} key={track._id}/>
         ))}
       </div>
     </div>

@@ -23,8 +23,10 @@ const trackSlice = createSlice({
       state.tracks = action.payload;
       state.shuffleTrack = action.payload;
     },
-    setThisTrack: (state, action: PayloadAction<TrackType>) => {
-      state.thisTrack = action.payload
+    setThisTrack: (state, action: PayloadAction<{currentTrack: TrackType; currentPlaylist: TrackType[]}>) => {
+      state.thisTrack = action.payload.currentTrack
+      state.tracks = action.payload.currentPlaylist
+      state.shuffleTrack = [...action.payload.currentPlaylist].sort(() => 0.5 - Math.random())
     },
     setNextTrack: (state) => {
       const playlist = state.isShuffle ? state.shuffleTrack : state.tracks 
