@@ -3,23 +3,29 @@ import styles from "./Track.module.css";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { setThisTrack } from "@/store/features/trackSlice";
 import { useEffect } from "react";
+import { current } from "@reduxjs/toolkit";
+import classNames from "classnames";
 // import { useAppSelector } from "@/store/store";
 
 type TrackProps = {
   track: TrackType;
-  playlist: TrackType[]
+  playlist: TrackType[];
 };
 
 export const Track = ({ track, playlist }: TrackProps) => {
-  // const thisTrack = useAppSelector((state) => state.playlist.thisTrack);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const { thisTrack, isPlayTrack } = useAppSelector(
+    (state) => state.tracksSlice
+  );
 
   const onClickTrack = () => {
-    dispatch(setThisTrack({
-      currentTrack: track,
-      currentPlaylist: playlist
-    }))
-  }
+    dispatch(
+      setThisTrack({
+        currentTrack: track,
+        currentPlaylist: playlist,
+      })
+    );
+  };
 
   const trackTime = (duration: number) => {
     const minutes = Math.floor(duration / 60);
@@ -32,6 +38,13 @@ export const Track = ({ track, playlist }: TrackProps) => {
       <div className={styles.playlistTrack}>
         <div className={styles.trackTitle}>
           <div className={styles.trackTitleImage}>
+            <div>
+              {thisTrack?._id === track._id && (
+                <div
+                  className={classNames(
+                    styles.PurpleLabel, { [styles.active]: isPlayTrack })}></div>
+              )}
+            </div>
             <svg className={styles.trackTitleSvg}>
               <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
             </svg>

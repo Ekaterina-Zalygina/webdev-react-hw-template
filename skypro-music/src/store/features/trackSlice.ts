@@ -6,6 +6,8 @@ type initialStateTrackType = {
   thisTrack: TrackType | null,
   shuffleTrack: TrackType[],
   isShuffle: boolean,
+  isPlayTrack: boolean,
+  id: number | null;
 };
 
 const initialState: initialStateTrackType = {
@@ -13,6 +15,8 @@ const initialState: initialStateTrackType = {
   thisTrack: null,
   shuffleTrack: [],
   isShuffle: false,
+  isPlayTrack: false,
+  id: null,
 };
 
 const trackSlice = createSlice({
