@@ -3,15 +3,21 @@
 import Image from "next/image";
 import styles from "./Nav.module.css";
 import React, { useState } from "react";
-// import { PageLogin } from "../Login/SignIn";
+import { loginUser } from "@/store/features/authSlice";
+import { PageLogin } from "../Login/SignIn";
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  // const [isAuth, setIsAuth] = useState(false);
 
   console.log(isOpen);
   const clickSite = () => {
     setIsOpen(!isOpen);
   };
+
+  // const isAuthReg = () => {
+  //   setIsAuth(!isAuth);
+  // };
 
   return (
     <nav className={styles.mainNav}>
@@ -37,13 +43,16 @@ export const Nav = () => {
                 Главное
               </a>
             </li>
+              <li className={styles.menuItem}>
+                <a href="#" className={styles.menuLink}>
+                  Мой плейлист
+                </a>
+              </li>
             <li className={styles.menuItem}>
-              <a href="#" className={styles.menuLink}>
-                Мой плейлист
-              </a>
-            </li>
-            <li className={styles.menuItem}>
-              <a href="../signin.html" className={styles.menuLink}>
+              <a
+                href="https://webdev-music-003b5b991590.herokuapp.com/user/login/"
+                className={styles.menuLink}
+                onClick={PageLogin}>
                 Войти
               </a>
             </li>
