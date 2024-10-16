@@ -50,9 +50,8 @@ export const Nav = () => {
               </li>
             <li className={styles.menuItem}>
               <a
-                href="https://webdev-music-003b5b991590.herokuapp.com/user/login/"
-                className={styles.menuLink}
-                onClick={PageLogin}>
+                href="../index.html"
+                className={styles.menuLink}>
                 Войти
               </a>
             </li>

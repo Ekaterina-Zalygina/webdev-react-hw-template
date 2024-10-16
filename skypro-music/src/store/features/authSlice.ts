@@ -3,6 +3,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type AuthStateType =  {
   authState: boolean;
+  // email: string;
+  // id: number;
+  // password: string;
+  // login: string;
+
 }
 
 const initialState: AuthStateType = {
@@ -17,14 +22,14 @@ const authSlice = createSlice({
       state.authState = action.payload;
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(registrationUser.fulfilled, (state, action) => { //fulfilled-выводит успешный запрос
-  //       state.authState = action.payload; 
-  //     })
-  //     .addCase(registrationUser.rejected, (state, action) => { //rejected-выводит неудачный запрос
-  //       console.error('Error:', action.error.message); 
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(registrationUser.fulfilled, (state, action) => { //fulfilled-выводит успешный запрос
+        state.authState = action.payload; 
+      })
+      .addCase(registrationUser.rejected, (state, action) => { //rejected-выводит неудачный запрос
+        console.error('Error:', action.error.message); 
+      });
+  },
 });
 
 export const registrationUser = createAsyncThunk(

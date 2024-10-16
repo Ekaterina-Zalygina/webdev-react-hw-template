@@ -37,7 +37,7 @@ export const RegUserName = () => {
         <div className="wrapper">
           <div className="container-signup">
             <div className="modal__block">
-              <form className="modal__form-login">
+              <form onSubmit={handleSignUp} className="modal__form-login">
                 <a href="../">
                   <div className="modal__logo">
                     <img src="../img/logo_modal.png" alt="logo" />
