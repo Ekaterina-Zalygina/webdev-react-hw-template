@@ -1,6 +1,6 @@
 import { Main } from "@/components/Main/Main"
 
 const mainPage = () => {
-    return <Main/>
-} 
+    return <Main />
+}
 export default mainPage
