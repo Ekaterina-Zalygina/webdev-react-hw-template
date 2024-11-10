@@ -37,8 +37,8 @@ const trackSlice = createSlice({
       const index = playlist.findIndex(item => item._id === state.thisTrack?._id)
       const nextIndex = index + 1
 
-      console.log(nextIndex)
-      console.log("SLICE THIS TRACK", state.thisTrack)
+      // console.log(nextIndex)
+      // console.log("SLICE THIS TRACK", state.thisTrack)
 
       if(nextIndex >= playlist.length) {
         state.thisTrack = playlist[0]
@@ -47,7 +47,7 @@ const trackSlice = createSlice({
       }
     },
     setPrevTrack: (state) => {
-      console.log("PREV")
+      // console.log("PREV")
       const playlist = !state.isShuffle ? state.tracks : state.shuffleTrack
       const index = playlist.findIndex(item => item._id === state.thisTrack!._id)
       const prevIndex = index - 1

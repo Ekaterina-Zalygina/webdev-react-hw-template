@@ -1,13 +1,12 @@
+import { LoginType, RegisterType } from "@/types/types";
+
 //регистрация пользователя
 const url = "https://webdev-music-003b5b991590.herokuapp.com";
 
 
-export type regUserType = {
-  email: string;
-  password: string;
-};
 
-export const RegisterUser = async ({ email, password }: regUserType) => {
+
+export const register = async ({ email, password, username }: RegisterType) => {
   const response = await fetch(url + "/user/signup/", {
     method: "POST",
     body: JSON.stringify({ email, password, username: email }),
@@ -20,7 +19,7 @@ export const RegisterUser = async ({ email, password }: regUserType) => {
   return data
 };
 
-export const LoginUser = async ({ email, password }: regUserType) => {
+export const login = async ({ email, password }: LoginType) => {
     const response = await fetch(url + "user/login/", {
       method: "POST",
       body: JSON.stringify({ email, password }),

@@ -1,5 +1,6 @@
 import { PageLogin } from "@/components/Login/SignIn"
 
-export const SignIn = () => {
+const SignIn = () => {
     return <PageLogin/>
-}
+} 
+export default SignIn

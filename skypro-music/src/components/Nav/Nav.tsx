@@ -3,11 +3,13 @@
 import Image from "next/image";
 import styles from "./Nav.module.css";
 import React, { useState } from "react";
-import { loginUser } from "@/store/features/authSlice";
-import { PageLogin } from "../Login/SignIn";
+import { LogoutState } from "@/store/features/authSlice";
+import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
   // const [isAuth, setIsAuth] = useState(false);
 
   console.log(isOpen);
@@ -18,6 +20,15 @@ export const Nav = () => {
   // const isAuthReg = () => {
   //   setIsAuth(!isAuth);
   // };
+
+  //перенести это на кнопку выйти
+  const logout = () => {
+    dispatch(LogoutState());
+    //передать логаут на онклик
+  };
+
+  const isAuth = useAppSelector((strore) => strore.auth.user) 
+  console.log(isAuth)
 
   return (
     <nav className={styles.mainNav}>
@@ -43,17 +54,22 @@ export const Nav = () => {
                 Главное
               </a>
             </li>
-              <li className={styles.menuItem}>
-                <a href="#" className={styles.menuLink}>
-                  Мой плейлист
-                </a>
-              </li>
             <li className={styles.menuItem}>
-              <a
-                href="../index.html"
-                className={styles.menuLink}>
-                Войти
+              <a href="#" className={styles.menuLink}>
+                Мой плейлист
               </a>
+               
+            </li>
+            <li className={styles.menuItem}>
+              {isAuth ? (
+                <Link href="/signin" className={styles.menuLink}>
+                  Войти
+                </Link>
+              ) : (
+                <Link href="/signin" className={styles.menuLink}>
+                  Выйти
+                </Link>
+              )}
             </li>
           </ul>
         </div>

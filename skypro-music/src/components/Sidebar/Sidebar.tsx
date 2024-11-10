@@ -1,7 +1,10 @@
+//import { useAppDispatch } from "@/store/store";
 import styles from "./Sidebar.module.css";
 import Image from "next/image";
+//import { LogoutState } from "@/store/features/authSlice";
 
 export const Sidebar = () => {
+
   return (
     <div className={styles.mainSidebar}>
       <div className={styles.sidebarPersonal}>

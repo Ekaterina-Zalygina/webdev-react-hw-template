@@ -1,74 +1,92 @@
 "use client";
 
-import { RegisterUser, regUserType } from "@/API/authApi";
+// import { RegisterUser, regUserType } from "@/API/authApi";
 import { registrationUser } from "@/store/features/authSlice";
 import { useAppDispatch } from "@/store/store";
-import { FormEvent } from "react";
+import { Router, useRouter } from "next/router";
+import React, { FormEvent, useState } from "react";
 
 export const RegUserName = () => {
   const dispatch = useAppDispatch();
+  const [error, setError] = useState(null);
+  const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    username: "",
+  });
 
-  const handleSignUp = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try {
       await dispatch(
         registrationUser({
-          email: "test@test.ru",
-          password: "test",
+          email,
+          password,
+          username,
         })
-      );
+      ).unwrap(); 
       console.log("Успешно!");
+      router.push("/main"); 
     } catch (error) {
       if (error instanceof Error) console.error(error.message);
     }
+
+    if (userData.email.trim()) {
+      setError("Введите почту");
+      return;
+    }
+
+    if (userData.password.trim()) {
+      setError("Введите пароль");
+      return;
+    }
+
+    if (userData.username.trim()) {
+      setError("Введите пароль");
+      return;
+    }
+
   };
 
   return (
-    <html lang="en">
-      <head>
-        {/* <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../css/signup.css" /> */}
-        <title>Skypro</title>
-      </head>
-
-      <body>
-        <div className="wrapper">
-          <div className="container-signup">
-            <div className="modal__block">
-              <form onSubmit={handleSignUp} className="modal__form-login">
-                <a href="../">
-                  <div className="modal__logo">
-                    <img src="../img/logo_modal.png" alt="logo" />
-                  </div>
-                </a>
-                <input
-                  className="modal__input login"
-                  type="text"
-                  name="login"
-                  placeholder="Почта"
-                />
-                <input
-                  className="modal__input password-first"
-                  type="password"
-                  name="password"
-                  placeholder="Пароль"
-                />
-                <input
-                  className="modal__input password-double"
-                  type="password"
-                  name="password"
-                  placeholder="Повторите пароль"
-                />
-                <button className="modal__btn-signup-ent">
-                  <a href="../index.html">Зарегистрироваться</a>
-                </button>
-              </form>
-            </div>
-          </div>
+    <div className="wrapper">
+      <div className="container-signup">
+        <div className="modal__block">
+          <form onSubmit={handleSignUp} className="modal__form-login">
+            <a href="../">
+              <div className="modal__logo">
+                <img src="../img/logo_modal.png" alt="logo" />
+              </div>
+            </a>
+            <input
+              className="modal__input login"
+              type="text"
+              name="login"
+              placeholder="Почта"
+            />
+            <input
+              className="modal__input password-first"
+              type="password"
+              name="password"
+              placeholder="Пароль"
+            />
+            <input
+              className="modal__input password-double"
+              type="password"
+              name="password"
+              placeholder="Повторите пароль"
+            />
+            <button className="modal__btn-signup-ent">
+              <a href="/signup">Зарегистрироваться</a>
+            </button>
+          </form>
         </div>
-      </body>
-    </html>
+      </div>
+    </div>
   );
 };
