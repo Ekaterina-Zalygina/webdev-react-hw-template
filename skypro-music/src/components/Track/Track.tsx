@@ -19,6 +19,7 @@ type TrackProps = {
 export const Track = ({ track, playlist, isLiked, onLikeToggle: onLike }: TrackProps) => {
     const dispatch = useAppDispatch()
     const { thisTrack, isPlayTrack } = useAppSelector((state) => state.tracksSlice)
+    const user = useAppSelector((state) => state.auth.user)
 
     const onClickTrack = () => {
         dispatch(
@@ -69,6 +70,7 @@ export const Track = ({ track, playlist, isLiked, onLikeToggle: onLike }: TrackP
                     <svg
                         className={styles.trackTimeSvg}
                         onClick={() => {
+                            if (!user) return
                             onLike()
                             isLiked ? deleteFromFavorite(track._id) : addToFavorite(track._id)
                         }}

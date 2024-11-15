@@ -9,9 +9,10 @@ import { getFavorites } from "../../API/trackAPI"
 
 type PlaylistProps = {
     tracks: TrackType[]
+    onDislike?: (track: TrackType) => void
 }
 
-export const Playlist = ({ tracks }: PlaylistProps) => {
+export const Playlist = ({ tracks, onDislike = () => {} }: PlaylistProps) => {
     const [favourites, setFavourites] = useState<TrackType[]>([])
 
     useEffect(() => {
@@ -43,6 +44,7 @@ export const Playlist = ({ tracks }: PlaylistProps) => {
                         <Track
                             onLikeToggle={() => {
                                 if (isLiked) {
+                                    onDislike(track)
                                     setFavourites(favourites.filter((x) => x._id !== track._id))
                                 } else {
                                     setFavourites([...favourites, track])

@@ -2,11 +2,11 @@
 
 import Image from "next/image"
 import styles from "./Nav.module.css"
-import React, { useEffect, useState } from "react"
-import { LogoutState } from "@/store/features/authSlice"
+import React, {useEffect, useState} from "react"
+import {LogIn, loginUser, LogoutState} from "@/store/features/authSlice"
 import Link from "next/link"
-import { useAppDispatch, useAppSelector } from "@/store/store"
-import { getTokens } from "@/API/trackAPI"
+import {useAppDispatch, useAppSelector} from "@/store/store"
+import {getTokens} from "@/API/trackAPI"
 
 export const Nav = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -18,10 +18,17 @@ export const Nav = () => {
 
     const isAuth = useAppSelector((store) => store.auth.user)
 
+    useEffect(() => {
+        const tokens = getTokens()
+        if (!tokens) return
+
+        dispatch(LogIn({email: '', id: 1, first_name: '', last_name: '', username: ''}))
+    }, [])
+
     return (
         <nav className={styles.mainNav}>
             <div className={styles.navLogo}>
-                <Image className={styles.logoImage} src="/img/logo.png" alt="logo" width={250} height={170} />
+                <Image className={styles.logoImage} src="/img/logo.png" alt="logo" width={250} height={170}/>
             </div>
             <div className={styles.navBurger} onClick={clickSite}>
                 <span className={styles.burgerLine}></span>
@@ -40,7 +47,7 @@ export const Nav = () => {
                             <Link href="/favorites" className={styles.menuLink}>
                                 Мой плейлист
                             </Link>
-                             
+
                         </li>
                         <li className={styles.menuItem}>
                             {!isAuth ? (
@@ -53,6 +60,7 @@ export const Nav = () => {
                                     className={styles.menuLink}
                                     onClick={() => {
                                         dispatch(LogoutState())
+                                        localStorage.clear()
                                     }}
                                 >
                                     Выйти

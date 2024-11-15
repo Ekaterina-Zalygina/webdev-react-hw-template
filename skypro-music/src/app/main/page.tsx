@@ -8,7 +8,7 @@ import { useAppSelector } from "@/store/store";
 
 export default function Home() {
   const currentTrack = useAppSelector((state) => state.tracksSlice.thisTrack);
-  console.log("THIS TRACK", currentTrack);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

@@ -1,7 +1,7 @@
-import { login, register } from "@/API/authApi"
-import { LoginType, RegisterType, TokenType } from "@/types/types"
-import { UserType } from "@/UserType"
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import {login, register} from "@/API/authApi"
+import {LoginType, RegisterType, TokenType} from "@/types/types"
+import {UserType} from "@/UserType"
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 type AuthStateType = {
     user: UserType | null
@@ -15,17 +15,17 @@ const initialState: AuthStateType = {
     token: null,
 }
 
-export const registrationUser = createAsyncThunk("user/signup", async ({ email, password, username }: RegisterType) => {
-    const response = await register({ email, password, username })
+export const registrationUser = createAsyncThunk("user/signup", async ({email, password, username}: RegisterType) => {
+    const response = await register({email, password, username})
     return response
 })
 
 export const loginUser = createAsyncThunk(
     "user/login",
-    async ({ email, password }: LoginType, { rejectWithValue, fulfillWithValue }) => {
-        return login({ email, password })
+    async ({email, password}: LoginType, {rejectWithValue, fulfillWithValue}) => {
+        return login({email, password})
             .then(fulfillWithValue)
-            .catch((err) => rejectWithValue({ message: err.message }))
+            .catch((err) => rejectWithValue({message: err.message}))
     }
 )
 
@@ -35,6 +35,9 @@ const authSlice = createSlice({
     reducers: {
         LogoutState: (state) => {
             state = initialState
+        },
+        LogIn: (state, action: PayloadAction<UserType>) => {
+            state.user = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -63,5 +66,5 @@ const authSlice = createSlice({
 //   }
 // )
 
-export const { LogoutState } = authSlice.actions
+export const {LogoutState, LogIn} = authSlice.actions
 export const authReducer = authSlice.reducer
