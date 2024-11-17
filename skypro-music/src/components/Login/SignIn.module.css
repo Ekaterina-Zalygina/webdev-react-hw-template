@@ -202,3 +202,8 @@
 .login {
   margin-bottom: 30px;
 }
+
+.error {
+  color: black;
+  text-align: center;
+}

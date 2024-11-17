@@ -78,7 +78,7 @@ export const PageLogin = () => {
               Зарегистрироваться
             </button>
 
-            <div>{error}</div>
+            <div className={styles.error}>{error}</div>
           </form>
         </div>
       </div>

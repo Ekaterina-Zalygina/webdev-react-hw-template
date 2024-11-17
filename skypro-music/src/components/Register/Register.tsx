@@ -88,8 +88,8 @@ export const RegUserName = () => {
               Зарегистрироваться
             </button>
 
-            <div>{apiError}</div>
-            <div>{error}</div>
+            <div className={styles.error}>{apiError}</div>
+            <div className={styles.error}>{error}</div>
           </form>
         </div>
       </div>
