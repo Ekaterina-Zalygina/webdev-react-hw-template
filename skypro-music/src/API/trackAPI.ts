@@ -10,6 +10,22 @@ export const trackAll = async (): Promise<TrackType[]> => {
     return response.json().then((tracksData) => tracksData.data)
 }
 
+export const getTrackCollections = async (): Promise<TrackType[]> => {
+    const response = await fetch(URL + "/catalog/selection/all")
+    if (!response.ok) {
+        throw new Error("Ошибка данных")
+    }
+    return response.json().then((tracksData) => tracksData.data)
+}
+
+export const getTrackCollection = async (id: number): Promise<TrackType[]> => {
+    const response = await fetch(URL + "/catalog/selection/" + id)
+    if (!response.ok) {
+        throw new Error("Ошибка данных")
+    }
+    return response.json().then((tracksData) => tracksData.data)
+}
+
 export const addToFavorite = async (id: number): Promise<TrackType[]> => {
     const tokens = getTokens()
 

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { getToken } from "@/API/authApi";
-import styles from "./SignIn.module.css";
+import styles from "./Sigin.module.css";
 import classNames from "classnames";
 
 export const PageLogin = () => {
@@ -78,7 +78,7 @@ export const PageLogin = () => {
               Зарегистрироваться
             </button>
 
-            <div>{error}</div>
+            <div className={styles.error}>{error}</div>
           </form>
         </div>
       </div>
