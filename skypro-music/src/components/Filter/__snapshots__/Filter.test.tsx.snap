@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="centerblockFilter"
+>
+  <div
+    className="filterTitle"
+  >
+    Искать по:
+  </div>
+  <div>
+    <div
+      className="filterButton buttonYearh _btnText"
+      onClick={[Function]}
+    >
+      исполнителю
+    </div>
+  </div>
+  <div>
+    <div
+      className="filterButton buttonYearh _btnText"
+      onClick={[Function]}
+    >
+      жанру
+    </div>
+  </div>
+  <div>
+    <div
+      className="filterButton buttonYearh _btnText"
+      onClick={[Function]}
+    >
+      году
+    </div>
+  </div>
+</div>
+`;

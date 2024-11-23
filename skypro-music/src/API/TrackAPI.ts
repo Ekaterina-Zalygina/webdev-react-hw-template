@@ -1,3 +1,4 @@
+import { CollectionItem } from "@/app/collections/page"
 import { TrackType } from "@/TrackType"
 
 export const URL = "https://webdev-music-003b5b991590.herokuapp.com"
@@ -18,7 +19,7 @@ export const getTrackCollections = async (): Promise<TrackType[]> => {
     return response.json().then((tracksData) => tracksData.data)
 }
 
-export const getTrackCollection = async (id: number): Promise<TrackType[]> => {
+export const getTrackCollection = async (id: number): Promise<CollectionItem> => {
     const response = await fetch(URL + "/catalog/selection/" + id)
     if (!response.ok) {
         throw new Error("Ошибка данных")

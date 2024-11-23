@@ -1,11 +1,11 @@
 "use client"
 
-import {getFavorites} from "@/API/trackAPI"
-import {Filter} from "@/components/Filter/Filter"
-import {Playlist} from "@/components/Playlist/Playlist"
-import {Search} from "@/components/Search/Search"
-import {TrackType} from "@/TrackType"
-import {useState, useEffect} from "react"
+import { getFavorites } from "@/API/trackAPI"
+import { Filter } from "@/components/Filter/Filter"
+import { Playlist } from "@/components/Playlist/Playlist"
+import { Search } from "@/components/Search/Search"
+import { TrackType } from "@/TrackType"
+import { useState, useEffect } from "react"
 import styles from "../../components/CenterBlock/CenterBlock.module.css"
 
 export const Favorites = () => {
@@ -16,20 +16,20 @@ export const Favorites = () => {
             try {
                 const res = await getFavorites()
                 setFavourites(res)
-            } catch (error) {
-            }
+            } catch (error) {}
         }
         getData()
     }, [])
 
     return (
         <div className={styles.mainCenterblock}>
-            <Search/>
+            <Search />
             <h2 className={styles.centerblockH2}>Мой плейлист</h2>
-            <Filter tracks={favourites}/>
-            <Playlist tracks={favourites} onDislike={(track) => {
-                setFavourites(favourites.filter((x) => x._id !== track._id))
-            }}
+            <Filter tracks={favourites} />
+            <Playlist
+                likedTracksIds={new Set(favourites.map((x) => x._id))}
+                setLikedTracks={() => {}}
+                tracks={favourites}
             />
         </div>
     )

@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="mainCenterblock"
+>
+  <div
+    className="centerblockSearch"
+  >
+    <svg
+      className="searchSvg"
+    >
+      <use
+        xlinkHref="image/icon/sprite.svg#icon-search"
+      />
+    </svg>
+    <input
+      className="searchText"
+      name="search"
+      placeholder="Поиск"
+      type="search"
+    />
+  </div>
+  <h2
+    className="centerblockH2"
+  >
+    Мой плейлист
+  </h2>
+  <div
+    className="centerblockFilter"
+  >
+    <div
+      className="filterTitle"
+    >
+      Искать по:
+    </div>
+    <div>
+      <div
+        className="filterButton buttonYearh _btnText"
+        onClick={[Function]}
+      >
+        исполнителю
+      </div>
+    </div>
+    <div>
+      <div
+        className="filterButton buttonYearh _btnText"
+        onClick={[Function]}
+      >
+        жанру
+      </div>
+    </div>
+    <div>
+      <div
+        className="filterButton buttonYearh _btnText"
+        onClick={[Function]}
+      >
+        году
+      </div>
+    </div>
+  </div>
+  <div
+    className="centerblockContent"
+  >
+    <div
+      className="contentTitle"
+    >
+      <div
+        className="playlistTitleCol col01"
+      >
+        Трек
+      </div>
+      <div
+        className="playlistTitleCol col02"
+      >
+        Исполнитель
+      </div>
+      <div
+        className="playlistTitleCol col03"
+      >
+        Альбом
+      </div>
+      <div
+        className="playlistTitleCol col04"
+      >
+        <svg
+          className="playlistTitleSvg"
+        >
+          <use
+            xlinkHref="img/icon/sprite.svg#icon-watch"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="contentPlaylist"
+    />
+  </div>
+</div>
+`;

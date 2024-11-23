@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="centerblockContent"
+>
+  <div
+    className="contentTitle"
+  >
+    <div
+      className="playlistTitleCol col01"
+    >
+      Трек
+    </div>
+    <div
+      className="playlistTitleCol col02"
+    >
+      Исполнитель
+    </div>
+    <div
+      className="playlistTitleCol col03"
+    >
+      Альбом
+    </div>
+    <div
+      className="playlistTitleCol col04"
+    >
+      <svg
+        className="playlistTitleSvg"
+      >
+        <use
+          xlinkHref="img/icon/sprite.svg#icon-watch"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="contentPlaylist"
+  />
+</div>
+`;
