@@ -36,6 +36,12 @@ exports[`renders correctly 1`] = `
   </div>
   <div
     className="contentPlaylist"
-  />
+  >
+    <div
+      className="noTracks"
+    >
+      Нет треков
+    </div>
+  </div>
 </div>
 `;

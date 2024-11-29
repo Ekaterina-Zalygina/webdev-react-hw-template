@@ -17,8 +17,10 @@ exports[`renders correctly 1`] = `
     <input
       className="searchText"
       name="search"
+      onChange={[Function]}
       placeholder="Поиск"
       type="search"
+      value=""
     />
   </div>
   <h2
@@ -34,7 +36,9 @@ exports[`renders correctly 1`] = `
     >
       Искать по:
     </div>
-    <div>
+    <div
+      style={{}}
+    >
       <div
         className="filterButton buttonYearh _btnText"
         onClick={[Function]}
@@ -42,7 +46,9 @@ exports[`renders correctly 1`] = `
         исполнителю
       </div>
     </div>
-    <div>
+    <div
+      style={{}}
+    >
       <div
         className="filterButton buttonYearh _btnText"
         onClick={[Function]}
@@ -50,7 +56,9 @@ exports[`renders correctly 1`] = `
         жанру
       </div>
     </div>
-    <div>
+    <div
+      style={{}}
+    >
       <div
         className="filterButton buttonYearh _btnText"
         onClick={[Function]}
@@ -94,7 +102,13 @@ exports[`renders correctly 1`] = `
     </div>
     <div
       className="contentPlaylist"
-    />
+    >
+      <div
+        className="noTracks"
+      >
+        Нет треков
+      </div>
+    </div>
   </div>
 </div>
 `;

@@ -1,36 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-<div
-  className="centerblockFilter"
->
+exports[`Filter component renders correctly 1`] = `
+<div>
   <div
-    className="filterTitle"
+    class="centerblockFilter"
   >
-    Искать по:
-  </div>
-  <div>
     <div
-      className="filterButton buttonYearh _btnText"
-      onClick={[Function]}
+      class="filterTitle"
     >
-      исполнителю
+      Искать по:
     </div>
-  </div>
-  <div>
-    <div
-      className="filterButton buttonYearh _btnText"
-      onClick={[Function]}
-    >
-      жанру
+    <div>
+      <div
+        class="filterButton buttonYearh _btnText"
+      >
+        исполнителю
+      </div>
     </div>
-  </div>
-  <div>
-    <div
-      className="filterButton buttonYearh _btnText"
-      onClick={[Function]}
-    >
-      году
+    <div>
+      <div
+        class="filterButton buttonYearh _btnText"
+      >
+        жанру
+      </div>
+    </div>
+    <div>
+      <div
+        class="filterButton buttonYearh _btnText"
+      >
+        году
+      </div>
     </div>
   </div>
 </div>
