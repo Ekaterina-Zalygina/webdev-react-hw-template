@@ -1,13 +1,9 @@
 .mainNav {
   width: 244px;
-  /* background-color: #181818; */
   padding: 20px 0 20px 36px;
-  /* margin-left: -1600px;
-  margin-top: -60px; */
 }
 
 .navLogo {
-  /* width: 113.33px; */
   height: 43px;
   padding: 13px 0 13px 0;
   background-color: transparent;
@@ -30,14 +26,7 @@
   justify-content: space-between;
 }
 
-/* .navMenu {
-      display: block;
-      visibility: visible;
-  } */
-
 .navMenu {
-  /* max-height: 0;
-  overflow: hidden; */
   transition: max-height 0.3s ease-in-out;
   display: block;
   visibility: visible;
