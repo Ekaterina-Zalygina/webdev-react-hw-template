@@ -27,7 +27,6 @@ export const CenterBlock = ({
         setTracks(res);
       } catch (error) {
         if (error instanceof Error) {
-          console.log(error.message);
           setErr(error.message);
         }
       }

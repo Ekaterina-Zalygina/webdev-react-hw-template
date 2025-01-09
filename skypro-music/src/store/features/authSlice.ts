@@ -45,15 +45,16 @@ const authSlice = createSlice({
     LogIn: (state, action: PayloadAction<UserType>) => {
       state.user = action.payload;
     },
+    ClearError: (state) => {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(registrationUser.fulfilled, (state, action) => {
-        //fulfilled-выводит успешный запрос
         state.user = action.payload;
       })
       .addCase(registrationUser.rejected, (state, action) => {
-        //rejected-выводит неудачный запрос
         state.error = action.error.message || "Произошла ошибка";
       })
       .addCase(loginUser.fulfilled, (state, action: PayloadAction<any>) => {

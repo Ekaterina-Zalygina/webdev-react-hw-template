@@ -16,41 +16,6 @@
   flex-direction: column;
 }
 
-/* .barPlayerProgress {
-  width: 100%;
-  height: 5px;
-  background: #2e2e2e;
-} */
-
-/* .styledProgressInput {
-  .styledProgressInput {
-    --progress-height: 5px;
-    --progress-color: #b672ff;
-    --progress-bg-color: #2e2e2e;
-
-    margin: 0;
-    width: 100%;
-    height: var(--progress-height);
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
-    transition: height 0.2s;
-
-    background: linear-gradient(
-      to right,
-      var(--progress-color) var(--value),
-      var(--progress-bg-color) var(--value)
-    );
-  }
-
-  .styledProgressInput:hover {
-    --progress-height: 8px;
-  }
-}  */
-
 .styledProgressInput {
   --progress-height: 15px;
   --progress-color: #b672ff;
@@ -83,7 +48,6 @@
   --thumb-height: 1px;
   --thumb-width: 1px;
   position: relative;
-  /* -webkit-appearance: none; */
   width: var(--thumb-width, var(--thumb-height));
   box-shadow: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
     100vmax var(--progress-color);
@@ -219,7 +183,7 @@
   }
 }
 
-.btnIcon svg{
+.btnIcon svg {
   stroke: white;
 }
 

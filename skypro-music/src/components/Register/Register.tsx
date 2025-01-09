@@ -17,29 +17,34 @@ export const RegUserName = () => {
   const router = useRouter();
   const apiError = useAppSelector((state) => state.auth.error);
 
+  const validateRegisterFields = (
+    email: string,
+    username: string,
+    password: string,
+    confirmPassword: string
+  ) => {
+    if (!email.trim()) return "Введите почту";
+    if (!username.trim()) return "Введите логин";
+    if (!password.trim()) return "Введите пароль";
+    if (!confirmPassword.trim()) return "Повторите пароль";
+    if (password !== confirmPassword) return "Пароли не совпадают";
+    return null;
+  };
+
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    let message = "";
-
-    if (!email.trim()) message = "Введите почту";
-    if (!password.trim()) message = "Введите пароль";
-    if (!username.trim()) message = "Введите логин";
-    if (!confirmPassword.trim()) message = "Повторите пароль";
-    if (confirmPassword !== password) message = "Пароли не совпадают";
-
-    setError(message);
-    if (message) return;
+    const validationError = validateRegisterFields(
+      email,
+      username,
+      password,
+      confirmPassword
+    );
+    setError(validationError);
+    if (validationError) return;
 
     try {
-      await dispatch(
-        registrationUser({
-          email,
-          password,
-          username,
-        })
-      ).unwrap();
-      console.log("Успешно!");
+      await dispatch(registrationUser({ email, password, username })).unwrap();
       router.push("/main");
     } catch (error) {
       if (error instanceof Error) console.error(error.message);

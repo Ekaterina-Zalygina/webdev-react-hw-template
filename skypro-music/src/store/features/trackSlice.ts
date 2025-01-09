@@ -10,9 +10,11 @@ type initialStateTrackType = {
   id: number | null;
 };
 
+const savedTrack = JSON.parse(localStorage.getItem("currentTrack") || "null");
+
 const initialState: initialStateTrackType = {
   tracks: [],
-  thisTrack: null,
+  thisTrack: savedTrack, // Загружаем трек из localStorage
   shuffleTrack: [],
   isShuffle: false,
   isPlayTrack: false,
@@ -39,6 +41,7 @@ const trackSlice = createSlice({
       state.shuffleTrack = [...action.payload.currentPlaylist].sort(
         () => 0.5 - Math.random()
       );
+      localStorage.setItem("currentTrack", JSON.stringify(state.thisTrack));
     },
     setNextTrack: (state) => {
       const playlist = state.isShuffle ? state.shuffleTrack : state.tracks;
